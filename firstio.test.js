@@ -18,5 +18,9 @@ describe('testing the readString function' , ()=> {
 
 		expect(readString('sample3.txt')).toBe(0);
 	});
+	test('Test file with 5 \n, should return 5' , ()=>{
+
+		expect(readString('sample4.txt')).toBe(5);
+	});
     
 });
