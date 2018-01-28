@@ -27,5 +27,5 @@ function filterExtensions(pathName , extension)
 
 module.exports = filterExtensions;
 
-filterExtensions(process.argv[2],process.argv[3]);
+//filterExtensions(process.argv[2],process.argv[3]);
 
