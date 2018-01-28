@@ -19,6 +19,7 @@ describe('Testing the sum function' , ()=>
 		expect(sum([1])).toBe(1);
 
 	});
+	
 }
 );
 
