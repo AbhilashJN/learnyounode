@@ -12,7 +12,7 @@ function filterExtensions(pathName , extension)
 			let fileName = name.split('.');
 			let ext = fileName[fileName.length-1];
 			
-			return (ext===extension);
+			return (ext===extension)&& fileName.length>1;
 
 		});
 		
@@ -27,5 +27,5 @@ function filterExtensions(pathName , extension)
 
 module.exports = filterExtensions;
 
-//filterExtensions(process.argv[2],process.argv[3]);
+filterExtensions(process.argv[2],process.argv[3]);
 

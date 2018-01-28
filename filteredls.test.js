@@ -27,7 +27,16 @@ describe('Testing the filterExtensions function',()=>{
 	test('Testing case where filenames have more than 1 .', ()=>{
 		inpPath = '/Users/abhilashnambissan/learnyounode';
 		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt','sample.file.txt','sample.mdfile.md'];
+		extension = 'txt';
 		expect(filterExtensions(inpArr,extension)).toBe('sample.file.txt','sample.txt','sample2.txt','sample3.txt','sample4.txt');
+
+	});
+
+	test('Testing case where filenameis same as extension .', ()=>{
+		inpPath = '/Users/abhilashnambissan/learnyounode';
+		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt','sample.file.txt','sample.mdfile.md','txt'];
+		extension = 'txt';
+		expect(filterExtensions(inpArr,extension)).toBe('sample.mdfile.md');
 
 	});
 
