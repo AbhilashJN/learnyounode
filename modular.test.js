@@ -8,5 +8,9 @@ describe('testing the moduleRunner function',()=>{
 		expect(moduleRunner('/Users/abhilashnambissan/learnyounode','txt')).toBe('sample.file.txt','sample.txt','sample2.txt','sample.3.txt','sample4.txt');
 	});
 
+	test('testing for directory with no matching files',()=>{
+
+		expect(moduleRunner('/Users/abhilashnambissan/learnyounode','png')).toBe('');
+	});
 
 });
