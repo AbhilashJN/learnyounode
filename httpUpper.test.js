@@ -1,7 +1,7 @@
 let http = require('http');
 let upperServer = require('./httpUpper');
 
-describe('Testing whether the content of the file is returned by the server is correct', () => {
+describe('Testing whether the content of the file returned by the server is correct', () => {
     
 	upperServer(8000);
 
