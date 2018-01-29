@@ -7,7 +7,7 @@ console.log = jest.fn();
 
 describe('Testing the filterExtensions function',()=>{
 
-	test('Testing case where all filenames have valid extension', (done)=>{
+	test('Testing case where many filenames have valid extension', (done)=>{
 		inpPath = '/Users/abhilashnambissan/learnyounode';
 		inpArr = ['sample.file.txt','sample.txt','sample2.txt','sample3.txt','sample4.txt'];
 		extension = 'txt';
