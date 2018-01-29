@@ -1,6 +1,6 @@
-let args = process.argv.slice(2);
+let argsArray = process.argv.slice(2);
 
-function sum( args){
+function sum(args){
 	let total=0;
 
 	for (let i=0;i<args.length;i++)
@@ -15,3 +15,4 @@ function sum( args){
 
 
 module.exports = sum;
+//sum(argsArray);
