@@ -9,7 +9,7 @@ function readString(filePath)
 		if (err) throw err;
 		data = data.split('\n');
 		console.log (data.length-1);
-		
+		done();
 	
 	});
 	

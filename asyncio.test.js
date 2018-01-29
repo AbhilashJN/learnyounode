@@ -8,8 +8,8 @@ describe('testing the readString function' , ()=> {
 
 	test('Test file with 0 \n, should return 0' , ()=>{
 		console.log = jest.fn();
-		
-		expect(readString('sample.txt')).toBe(0);
+		readString('sample.txt');
+		expect(console.log).toHaveBeenCalledWith(0);
 	});
     
 
