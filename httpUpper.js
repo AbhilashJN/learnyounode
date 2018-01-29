@@ -2,16 +2,24 @@ let http = require('http');
 let port = process.argv[2];
 let map =require('through2-map');
 
-let server = http.createServer((request,response)=>{
+function upperServer(port){
 
-	if(request.method!=='POST')
-	{
-		console.log('Not a post request');
-		return null;
-	}
-	request.pipe(map(function (chunk) {
-		return chunk.toString().toUpperCase();
-	})).pipe(response);
-});
+	let server = http.createServer((request,response)=>{
 
-server.listen(port);
+		if(request.method!=='POST')
+		{
+			console.log('Not a post request');
+			return null;
+		}
+		request.pipe(map(function (chunk) {
+			return chunk.toString().toUpperCase();
+		})).pipe(response);
+	});
+
+	server.listen(port);
+
+
+}
+
+
+module.exports = upperServer;
