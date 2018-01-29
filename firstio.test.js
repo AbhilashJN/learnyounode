@@ -22,5 +22,8 @@ describe('testing the readString function' , ()=> {
 
 		expect(readString('sample4.txt')).toBe(5);
 	});
-    
+	test('Test filename which does not exist, should throw error' , ()=>{
+
+		expect(()=>{readString('a.txt');}).toThrow();
+	});
 });
