@@ -7,40 +7,63 @@ console.log = jest.fn();
 
 describe('Testing the filterExtensions function',()=>{
 
-	test('Testing case where all filenames have valid extension', ()=>{
+	test('Testing case where all filenames have valid extension', (done)=>{
 		inpPath = '/Users/abhilashnambissan/learnyounode';
-		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt'];
+		inpArr = ['sample.file.txt','sample.txt','sample2.txt','sample3.txt','sample4.txt'];
 		extension = 'txt';
-		expect(filterExtensions(inpPath,extension)).toBe('sample.txt','sample2.txt','sample3.txt','sample4.txt');
+		function callback(err,data){
+			expect(data).toEqual(inpArr);
+			done();
+		}
+		filterExtensions(inpPath,extension,callback);
 	});
 
 
-	test('Testing case where no filenames have valid extension', ()=>{
+	test('Testing case where no filenames have valid extension', (done)=>{
 		inpPath = '/Users/abhilashnambissan/learnyounode';
-		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt'];
+		inpArr = [];
+		extension = 'png';
+		function callback(err,data){
+			expect(data).toEqual(inpArr);
+			done();
+		}
+		filterExtensions(inpPath,extension,callback);
+
+	});
+
+
+	test('Testing case where filenames have more than 1 .', (done)=>{
+		inpPath = '/Users/abhilashnambissan/learnyounode';
+		inpArr = ['sample.mdfile.md'];
 		extension = 'md';
-		expect(filterExtensions(inpPath,extension)).toBe('');
+		function callback(err,data){
+			expect(data).toEqual(inpArr);
+			done();
+		}
+		filterExtensions(inpPath,extension,callback);
 
 	});
 
-
-	test('Testing case where filenames have more than 1 .', ()=>{
+	test('Testing case where filename is same as extension .', (done)=>{
 		inpPath = '/Users/abhilashnambissan/learnyounode';
-		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt','sample.file.txt','sample.mdfile.md'];
+		inpArr = ['sample.file.txt','sample.txt','sample2.txt','sample3.txt','sample4.txt'];
 		extension = 'txt';
-		expect(filterExtensions(inpArr,extension)).toBe('sample.file.txt','sample.txt','sample2.txt','sample3.txt','sample4.txt');
-
+		function callback(err,data){
+			expect(data).toEqual(inpArr);
+			done();
+		}
+		filterExtensions(inpPath,extension,callback);
 	});
 
-	test('Testing case where filenameis same as extension .', ()=>{
-		inpPath = '/Users/abhilashnambissan/learnyounode';
-		inpArr = ['sample.txt','sample2.txt','sample3.txt','sample4.txt','sample.file.txt','sample.mdfile.md','txt'];
+	test('Testing for invalid directory', (done)=>{
+		inpPath = '/Users/abhilashnambissan/learnyounode2';
 		extension = 'txt';
-		expect(filterExtensions(inpArr,extension)).toBe('sample.mdfile.md');
-
+		function callback(err,data){
+			expect(err.code).toEqual('ENOENT');
+			done();
+		}
+		filterExtensions(inpPath,extension,callback);
 	});
-
-
 
 
 
